@@ -160,8 +160,13 @@ class ShowPairMatches:
         # cv2.imshow(f"Verified matches   {img0_path.name} - {img1_path.name}", img_matches_resized)
         # cv2.waitKey(0)
         # cv2.destroyAllWindows()
+        
+        output_path = str(self.out_file)  
+        
+        #create a folder "matches" if non existent yet         
+        os.makedirs(os.path.dirname(output_path), exist_ok=True)          
 
-        cv2.imwrite(str(self.out_file), img_matches_resized)
+        cv2.imwrite(output_path, img_matches_resized)
 
     def resize_image(self, img, max_side_length):
         height, width = img.shape[:2]
